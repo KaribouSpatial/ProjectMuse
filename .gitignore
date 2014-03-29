@@ -11,3 +11,15 @@
 *.lai
 *.la
 *.a
+
+# Visual Studio BS
+*.opensdf
+*.sdf
+*.tlog
+*.log
+*.pdb
+*.idb
+/ProjectMuse/x64/Debug
+/ProjectMuse/ProjectMuse/x64/Debug
+/ProjectMuse/ProjectMuse/ProjectMuse.vcxproj.user
+/ProjectMuse/zExternal/zExternal.vcxproj.user

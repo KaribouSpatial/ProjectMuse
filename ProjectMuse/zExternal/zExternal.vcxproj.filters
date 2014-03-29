@@ -13,24 +13,10 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\State Stack">
-      <UniqueIdentifier>{9af5f539-c2ce-43f6-b19a-2f4bf623f027}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\State Stack">
-      <UniqueIdentifier>{0bf83ac8-436e-48dd-9f66-23eb27d3461c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StateStack.cpp">
-      <Filter>Source Files\State Stack</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="StateStack.h">
-      <Filter>Header Files\State Stack</Filter>
+    <ClInclude Include="ExVector.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
