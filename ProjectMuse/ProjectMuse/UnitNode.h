@@ -6,10 +6,10 @@
 /// 
 /// 
 /////////////////////////////////////////////////////
-
 #pragma once
 
 //Include My Code
+#include "SceneNode.h"
 
 //Include Other
 
@@ -22,15 +22,15 @@
 //Class Prototypes
 
 //Class Declaration
-class StateStack
+class UnitNode: public SceneNode
 {
 public:
 
 	//Constructor
-	StateStack();
+	UnitNode();
 
 	//Destructor
-	~StateStack();
+	~UnitNode();
 
 	//R-only access
 
@@ -39,7 +39,7 @@ public:
 	//Setters
 
 	//Function
-	void update(const double& dt);
+	void draw() const override;
 
 	//Static Function
 

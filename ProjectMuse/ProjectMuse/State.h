@@ -10,6 +10,7 @@
 #pragma once
 
 //Include My Code
+#include "StatesID.h"
 
 //Include Other
 
@@ -20,17 +21,29 @@
 //Prototypes
 
 //Class Prototypes
+class StateStack;
 
 //Class Declaration
-class StateStack
+class State
 {
 public:
 
+	struct Context
+	{
+		// Context();
+		// TextureHolder* textures;
+		// FontHolder* fonts;
+		// MusicPlayer* music;
+		// SoundPlayer* sounds;
+		// KeyBinding* keys1;
+		// KeyBinding* keys2;
+	};
+
 	//Constructor
-	StateStack();
+	State();
 
 	//Destructor
-	~StateStack();
+	~State();
 
 	//R-only access
 
@@ -39,7 +52,6 @@ public:
 	//Setters
 
 	//Function
-	void update(const double& dt);
 
 	//Static Function
 
@@ -47,10 +59,19 @@ public:
 
 	//Public Attribute
 
+protected:
+
+	//Protected Function
+	void requestStackPush(States::ID stateID);
+	void requestStackPop();
+	void requestStateClear();
+	Context getContext() const;
+
 private:
 
 	//Private Function
 
 	//Private Attribute
-
+	StateStack* mStack;
+	Context mContext;
 };

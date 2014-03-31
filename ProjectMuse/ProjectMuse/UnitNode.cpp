@@ -8,10 +8,11 @@
 /////////////////////////////////////////////////////
 
 //Include My Code
-#include "StateStack.h"
+#include "UnitNode.h"
+#include "FacadeApplication.h"
+#include "FacadeResources.h"
 
 //Include Other
-#include <iostream>
 
 //Defines
 
@@ -24,12 +25,12 @@
 //Class Definition
 
 //Constructor
-StateStack::StateStack()
+UnitNode::UnitNode(): SceneNode()
 {
 }
 
 //Destructor
-StateStack::~StateStack()
+UnitNode::~UnitNode()
 {
 }
 
@@ -40,11 +41,13 @@ StateStack::~StateStack()
 //Setters
 
 //Function
-void StateStack::update(const double& dt)
+void UnitNode::draw() const
 {
-	std::cout << "Update timer: " << dt << std::endl;
+	FacadeApplication::Instance()->getFacadeResources()->draw(FacadeResources::Cube);
 }
 
 //Static Function
+
+//Private Function
 
 //Operator Overload

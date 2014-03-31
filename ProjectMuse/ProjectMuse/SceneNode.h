@@ -22,15 +22,15 @@
 //Class Prototypes
 
 //Class Declaration
-class StateStack
+class SceneNode
 {
 public:
 
 	//Constructor
-	StateStack();
+	SceneNode();
 
 	//Destructor
-	~StateStack();
+	virtual ~SceneNode();
 
 	//R-only access
 
@@ -39,7 +39,7 @@ public:
 	//Setters
 
 	//Function
-	void update(const double& dt);
+	virtual void draw() const;
 
 	//Static Function
 

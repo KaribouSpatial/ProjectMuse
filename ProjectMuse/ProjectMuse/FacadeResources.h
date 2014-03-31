@@ -22,15 +22,18 @@
 //Class Prototypes
 
 //Class Declaration
-class StateStack
+class FacadeResources
 {
 public:
-
+	enum Models
+	{
+		Cube
+	};
 	//Constructor
-	StateStack();
+	FacadeResources();
 
 	//Destructor
-	~StateStack();
+	~FacadeResources();
 
 	//R-only access
 
@@ -39,7 +42,7 @@ public:
 	//Setters
 
 	//Function
-	void update(const double& dt);
+	void draw(Models);
 
 	//Static Function
 

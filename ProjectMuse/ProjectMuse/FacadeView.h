@@ -10,36 +10,43 @@
 #pragma once
 
 //Include My Code
+#include <Vector.hpp>
 
 //Include Other
+#include <memory>
 
 //Defines
+#define unique(x) std::unique_ptr<x>
 
 //Const
 
 //Prototypes
 
 //Class Prototypes
+class Camera;
+class Projection;
 
 //Class Declaration
-class StateStack
+class FacadeView
 {
 public:
 
 	//Constructor
-	StateStack();
+	FacadeView();
 
 	//Destructor
-	~StateStack();
+	~FacadeView();
 
 	//R-only access
+	const vec2i& getWindowSize() const;
 
 	//R-W access
 
 	//Setters
 
 	//Function
-	void update(const double& dt);
+	void applyView() const;
+	void resize(int x, int y);
 
 	//Static Function
 
@@ -52,5 +59,6 @@ private:
 	//Private Function
 
 	//Private Attribute
-
+	unique(Camera) mCamera;
+	unique(Projection) mProjection;
 };

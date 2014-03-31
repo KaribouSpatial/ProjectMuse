@@ -6,7 +6,6 @@
 /// 
 /// 
 /////////////////////////////////////////////////////
-
 #pragma once
 
 //Include My Code
@@ -22,35 +21,14 @@
 //Class Prototypes
 
 //Class Declaration
-class StateStack
+class NoCopy
 {
-public:
-
+protected:
 	//Constructor
-	StateStack();
-
-	//Destructor
-	~StateStack();
-
-	//R-only access
-
-	//R-W access
-
-	//Setters
-
-	//Function
-	void update(const double& dt);
-
-	//Static Function
-
-	//Operator Overload
-
-	//Public Attribute
+	NoCopy(){};
 
 private:
-
-	//Private Function
-
-	//Private Attribute
-
+	//Disable copy
+	NoCopy(const NoCopy&);
+	NoCopy& operator=(const NoCopy&);
 };

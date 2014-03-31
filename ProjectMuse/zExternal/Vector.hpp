@@ -14,127 +14,127 @@ enum ax
 };
 
 template <class T = double, const int N = 3>
-class ExVector
+class Vector
 {
 protected:
-	T mExVector[N];
+	T mVector[N];
 
 public:
 
 	//Default contructor
-	inline ExVector()
+	inline Vector()
 	{
 	}
 
 	//Copy constructor
 	template<class T2>
-	inline ExVector(const ExVector<T2, N>& cpy)
+	inline Vector(const Vector<T2, N>& cpy)
 	{
 		for(int inc = 0; inc < N; ++inc)
 		{
-			mExVector[inc] = static_cast<T>(cpy[inc]);
+			mVector[inc] = static_cast<T>(cpy[inc]);
 		}
 	}
 
 	//Non-Const Operator[]
 	inline T& operator[] (const ax& axi)
 	{
-		return mExVector[axi];
+		return mVector[axi];
 	}
 
 	//Const Operator[]
 	inline const T& operator[] (const ax& axi) const
 	{
-		return mExVector[axi];
+		return mVector[axi];
 	}
 
 	//Non-Const Operator[]
 	inline T& operator[] (const unsigned& i)
 	{
-		return mExVector[inc];
+		return mVector[inc];
 	}
 
 	//Const Operator[]
 	inline const T& operator[] (const unsigned& i) const
 	{
-		return mExVector[inc];
+		return mVector[inc];
 	}
 
 	//Operator=
-	inline const ExVector<T, N>& operator= (const ExVector<T, N>& vec)
+	inline const Vector<T, N>& operator= (const Vector<T, N>& vec)
 	{
 		for(int inc = 0; inc < N; ++inc)
 		{
-			mExVector[inc] = vec.mExVector[inc];
+			mVector[inc] = vec.mVector[inc];
 		}
 		return *this;
 	}
 
 	//Operator==
-	inline bool operator == (const ExVector<T, N>& vec) const
+	inline bool operator == (const Vector<T, N>& vec) const
 	{
 		for(int inc = 0; inc < N; ++inc)
 		{
-			if(mExVector[inc] != vec.mExVector[inc])
+			if(mVector[inc] != vec.mVector[inc])
 				return false;
 		}
 		return true;
 	}
 
 	//Operator!=
-	inline bool operator != (const ExVector<T, N>& vec) const
+	inline bool operator != (const Vector<T, N>& vec) const
 	{
 		for(int inc = 0; inc < N; ++inc)
 		{
-			if(mExVector[inc] == vec.mExVector[inc])
+			if(mVector[inc] == vec.mVector[inc])
 				return false;
 		}
 		return true;
 	}
 
 	//Operator+=
-	inline const ExVector<T, N>& operator += (const ExVector<T, N>& vec)
+	inline const Vector<T, N>& operator += (const Vector<T, N>& vec)
 	{
 		for(int inc = 0; inc < N; ++inc)
 		{
-			mExVector[inc] += vec.mExVector[inc];
+			mVector[inc] += vec.mVector[inc];
 		}
 		return *this;
 	}
 
 	//Operator-=
-	inline const ExVector<T, N>& operator -= (const ExVector<T, N>& vec)
+	inline const Vector<T, N>& operator -= (const Vector<T, N>& vec)
 	{
 		for(int inc = 0; inc < N; ++inc)
 		{
-			mExVector[inc] -= vec.mExVector[inc];
+			mVector[inc] -= vec.mVector[inc];
 		}
 		return *this;
 	}
 
 	//Operator*=
-	inline const ExVector<T, N>& operator*= (const T k)
+	inline const Vector<T, N>& operator*= (const T k)
 	{
 		for(int inc = 0; inc < N; ++inc)
 		{
-			mExVector[inc] *= k;
+			mVector[inc] *= k;
 		}
 		return *this;
 	}
 
 	//Operator/=
-	inline const ExVector<T, N>& operator /= (const T k)
+	inline const Vector<T, N>& operator /= (const T k)
 	{
-		if((T)k == 0) return
+		if((T)k == 0) return Vector<T, N>();
 		for(int inc = 0; inc < N; ++inc)
 		{
-			mExVector[inc] /= k;
+			mVector[inc] /= k;
 		}
 		return *this;
 	}
 
 	//Operator+ with vector
-	inline ExVector<T, N> operator+ (const ExVector<T, N>& vec) const
+	inline Vector<T, N> operator+ (const Vector<T, N>& vec) const
 	{
 		Vecteur<T, N> cpy(*this);
 		cpyr += vec;
@@ -142,7 +142,7 @@ public:
 	}
 
 	//Operator+ with scalar
-	inline ExVector<T, N> operator+ (const T k) const
+	inline Vector<T, N> operator+ (const T k) const
 	{
 		Vecteur<T, N> cpy(*this);
 		for(int inc = 0; inc < N; ++inc)
@@ -153,7 +153,7 @@ public:
 	}
 
 	//Operator-
-	inline ExVector<T, N> operator- (const ExVector<T, N>& vec) const
+	inline Vector<T, N> operator- (const Vector<T, N>& vec) const
 	{
 		Vecteur<T, N> cpy(*this);
 		cpy -= vec;
@@ -161,7 +161,7 @@ public:
 	}
 
 	//Operator- with scalar
-	inline ExVector<T, N> operator- (const T k) const
+	inline Vector<T, N> operator- (const T k) const
 	{
 		Vecteur<T, N> cpy(*this);
 		for(int inc = 0; inc < N; ++inc)
@@ -172,7 +172,7 @@ public:
 	}
 
 	//Unary Operator-
-	inline ExVector<T, N> operator- () const
+	inline Vector<T, N> operator- () const
 	{
 		ExVector<T, N> vec;
 		for(int inc = 0; inc < N; ++inc)
@@ -183,7 +183,7 @@ public:
 	}
 
 	//Operator*
-	inline ExVector<T, N> operator* (const T k) const
+	inline Vector<T, N> operator* (const T k) const
 	{
 		Vecteur<T, N> cpy(*this);
 		cpy *= k;
@@ -191,13 +191,13 @@ public:
 	}
 
 	//Friend Operator*
-	inline friend ExVector<T, N> operator* (const T k, const ExVector<T, N>& vec)
+	inline friend Vector<T, N> operator* (const T k, const Vector<T, N>& vec)
 	{
 		return vec * k;
 	}
 
 	//Operator/
-	inline ExVector<T, N> operator/ (const T k) const
+	inline Vector<T, N> operator/ (const T k) const
 	{
 		Vecteur<T, N> cpy(*this);
 		cpy /= k;
@@ -211,7 +211,7 @@ public:
 		T comp;
 		for(int inc = 0; inc < N; ++inc)
 		{
-			comp = mExVector[inc];
+			comp = mVector[inc];
 			norme += (comp *= comp);
 		}
 		return sqrt(norme);
@@ -222,7 +222,7 @@ public:
 	{
 		for(int inc = 0; inc < N; ++inc)
 		{
-			if(mExVector[inc] != (T)0) return false;
+			if(mVector[inc] != (T)0) return false;
 		}
 		return true;
 	}
@@ -230,25 +230,26 @@ public:
 	//Normalize the vector
 	inline void normalize()
 	{
-		if((T n = norme()) != (T)0)
+		T n = norme();
+		if(n != (T)0)
 			(*this) /= n;
 	}
 
 	//Scalar product or DOT
 	//Scalar product between *this and "vec"
-	inline T dot(const ExVector<T, N>& vec) const
+	inline T dot(const Vector<T, N>& vec) const
 	{
 		T temp = 0;
 		for(int inc = 0; inc < N; ++inc)
 		{
-			temp += mExVector[inc] * vec.mExVector[inc];
+			temp += mVector[inc] * vec.mVector[inc];
 		}
 		return temp;
 	}
 
 	//Projection of vectors
 	//*this is projected onto the direction "dir"
-	inline ExVector<T, N> project(const ExVector<T, N>& dir) const
+	inline Vector<T, N> project(const Vector<T, N>& dir) const
 	{
 		T coeff = dot(dir) / dir.dot(dir);
 		Vecteur<T, N> vec(dir);
@@ -259,26 +260,26 @@ public:
 	//Reflection of vectors
 	//*this is reflected according to the surface normal "normal"
 	//"normal" must be normalized
-	inline ExVector<T, N> reflect(const ExVector<T, N>& normal) const
+	inline Vector<T, N> reflect(const Vector<T, N>& normal) const
 	{
-		return mExVector - normal * (2 * dot(normal));
+		return mVector - normal * (2 * dot(normal));
 	}
 
 	//Change size of vectors
 	template <const int N2>
-	inline ExVector<T, N2> convert() const
+	inline Vector<T, N2> convert() const
 	{
 		ExVector<T, N2> vec;
 		if(N2 <= N)
 		{
 			for(int inc = 0; inc < N2; ++inc)
-				vec[inc] = mExVector[inc];
+				vec[inc] = mVector[inc];
 		}
 		else
 		{
 			int inc;
 			for(inc = 0; inc < N; ++inc)
-				vec[inc] = mExVector[inc];
+				vec[inc] = mVector[inc];
 			for(inc = N; inc < N2; ++inc)
 				vec[inc] = 0;
 		}
@@ -287,31 +288,31 @@ public:
 
 	//Change type of vectors
 	template <class T2>
-	inline ExVector<T2, N> convert() const
+	inline Vector<T2, N> convert() const
 	{
 		ExVector<T2, N> vec;
 		for(int inc = 0; inc < N; ++inc)
 		{
-			vec[inc] = static_cast<T2>(mExVector[inc]);
+			vec[inc] = static_cast<T2>(mVector[inc]);
 		}
 		return vec;
 	}
 
 	//Change size and type of vectors
 	template <class T2, const int N2>
-	inline ExVector<T2, N2> convert() const
+	inline Vector<T2, N2> convert() const
 	{
 		ExVector<T2, N2> vec;
 		if(N2 <= N)
 		{
 			for(int inc = 0; inc < N2; ++inc)
-				vec[inc] = static_cast<T2>(mExVector[inc]);
+				vec[inc] = static_cast<T2>(mVector[inc]);
 		}
 		else
 		{
 			int inc;
 			for(inc = 0; inc < N; ++inc)
-				vec[i] = static_cast<T2>(mExVector[i]);
+				vec[i] = static_cast<T2>(mVector[i]);
 			for(inc = N; inc < N2; ++inc)
 				vec[i] = 0;
 		}
@@ -325,37 +326,37 @@ public:
 
 		for(int inc = 0; inc < N; ++inc)
 		{
-			vec[inc] = abs(mExVector[inc]);
+			vec[inc] = abs(mVector[inc]);
 		}
 	}
 
 };
 
 template<class T>
-class Vector2: public ExVector<T, 2>
+class Vector2: public Vector<T, 2>
 {
 public:
 
 	//Constructor with implicit conversion
 	template<class T2>
-	inline Vector2(const Vector2<T2>& u): ExVector<T, 2>(u)
+	inline Vector2(const Vector2<T2>& u): Vector<T, 2>(u)
 	{
 	}
 
 	//Parameter constructor
 	inline Vector2(const T x = 0, const T y = 0)
 	{
-		mExVector[X] = x;
-		mExVector[Y] = y;
+		mVector[X] = x;
+		mVector[Y] = y;
 	}
 
 	//Copy constructor
-	inline Vector2(const ExVector<T, 2>& v): ExVector<T, 2>(v)
+	inline Vector2(const Vector<T, 2>& v): Vector<T, 2>(v)
 	{
 	}
 
 	//Operator= overload
-	inline const Vector2& operator= (const ExVector<T, 2>& v)
+	inline const Vector2& operator= (const Vector<T, 2>& v)
 	{
 		ExVector<T, 2>::operator= (v);
 		return *this;
@@ -364,7 +365,7 @@ public:
 	//Calculate the ccw angle from positive X axis, in rad
 	inline T angle() const
 	{
-		T angle = atan2(mExVector[Y], mExVector[X]);
+		T angle = atan2(mVector[Y], mVector[X]);
 		if(angle < 0)
 			return angle + M2_PI;
 		else
@@ -373,30 +374,30 @@ public:
 };
 
 template<class T>
-class Vector3: public ExVector<T, 3>
+class Vector3: public Vector<T, 3>
 {
 public:
 	//Constructor with implicit conversion
 	template<class T2>
-	inline Vector3(const Vector3<T2>& u): ExVector<T, 3>(u)
+	inline Vector3(const Vector3<T2>& u): Vector<T, 3>(u)
 	{
 	}
 
 	//Parameter constructor
 	inline Vector3(const T x = 0, const T y = 0, const T z = 0)
 	{
-		mExVector[X] = x;
-		mExVector[Y] = y;
-		mExVector[Z] = z;
+		mVector[X] = x;
+		mVector[Y] = y;
+		mVector[Z] = z;
 	}
 
 	//Copy constructor
-	inline Vector3(const ExVector<T, 2>& v): ExVector<T, 2>(v)
+	inline Vector3(const Vector<T, 2>& v): Vector<T, 2>(v)
 	{
 	}
 
 	//Operator= overload
-	inline const Vector3& operator= (const ExVector<T, 3>& v)
+	inline const Vector3& operator= (const Vector<T, 3>& v)
 	{
 		ExVector<T, 3>::operator= (v);
 		return *this;
@@ -405,15 +406,15 @@ public:
 	//Calculate spheric coord Theta
 	inline T getTheta() const
 	{
-		Vector2<T> xy(mExVector[X], mExVector[Y]);
+		Vector2<T> xy(mVector[X], mVector[Y]);
 		return xy.angle();
 	}
 
 	//Calculate spheric coord Theta
 	inline T getPhi() const
 	{
-		Vector2<T> xy(mExVector[X], mExVector[Y]);
-		Vector2<T> zr(mExVector[Z], xy.norme());
+		Vector2<T> xy(mVector[X], mVector[Y]);
+		Vector2<T> zr(mVector[Z], xy.norme());
 		return zr.angle();
 	}
 

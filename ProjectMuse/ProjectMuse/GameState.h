@@ -22,15 +22,15 @@
 //Class Prototypes
 
 //Class Declaration
-class StateStack
+class GameState
 {
 public:
 
 	//Constructor
-	StateStack();
+	GameState();
 
 	//Destructor
-	~StateStack();
+	~GameState();
 
 	//R-only access
 
@@ -39,7 +39,6 @@ public:
 	//Setters
 
 	//Function
-	void update(const double& dt);
 
 	//Static Function
 

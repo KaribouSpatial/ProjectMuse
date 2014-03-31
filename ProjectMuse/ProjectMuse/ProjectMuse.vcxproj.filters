@@ -19,6 +19,33 @@
     <Filter Include="Header Files\State Stack">
       <UniqueIdentifier>{0bf83ac8-436e-48dd-9f66-23eb27d3461c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Template">
+      <UniqueIdentifier>{771be873-5388-4480-98c2-717ba7fe8930}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\View">
+      <UniqueIdentifier>{a836dcd8-3725-419b-9f0e-761c87eed64e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\View">
+      <UniqueIdentifier>{dfdf018b-6938-4441-92b4-35583d22ce8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Application">
+      <UniqueIdentifier>{26f3a709-260f-4de5-926c-a379e70ef8ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Application">
+      <UniqueIdentifier>{bc580701-60b3-4088-a991-217141c0031c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Resources">
+      <UniqueIdentifier>{7df7fe3d-e05e-447d-aa10-d719775a8b01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Resources">
+      <UniqueIdentifier>{f8b2944c-2393-4080-8b1c-bc42664d1750}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene">
+      <UniqueIdentifier>{81cbed19-79b2-4f89-adef-059c42dec5e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{138c593d-27a7-4ae8-900b-15ff499550ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -27,10 +54,91 @@
     <ClCompile Include="StateStack.cpp">
       <Filter>Source Files\State Stack</Filter>
     </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files\State Stack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Travaux\Poly\inf2990-07\Sources\C++\TEMPLATE_SINGLETON.cpp">
+      <Filter>Template</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Travaux\Poly\inf2990-07\Sources\C++\TEMPLATE.cpp">
+      <Filter>Template</Filter>
+    </ClCompile>
+    <ClCompile Include="FacadeView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Source Files\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="FacadeApplication.cpp">
+      <Filter>Source Files\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Source Files\State Stack</Filter>
+    </ClCompile>
+    <ClCompile Include="FacadeResources.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Projection.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneNode.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="FacadeScene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitNode.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StateStack.h">
       <Filter>Header Files\State Stack</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files\State Stack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Travaux\Poly\inf2990-07\Sources\C++\TEMPLATE.h">
+      <Filter>Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Travaux\Poly\inf2990-07\Sources\C++\TEMPLATE_SINGLETON.h">
+      <Filter>Template</Filter>
+    </ClInclude>
+    <ClInclude Include="FacadeView.h">
+      <Filter>Header Files\View</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Header Files\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="FacadeApplication.h">
+      <Filter>Header Files\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files\State Stack</Filter>
+    </ClInclude>
+    <ClInclude Include="StatesID.h">
+      <Filter>Header Files\State Stack</Filter>
+    </ClInclude>
+    <ClInclude Include="FacadeResources.h">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Projection.h">
+      <Filter>Header Files\View</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\View</Filter>
+    </ClInclude>
+    <ClInclude Include="FacadeScene.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneNode.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitNode.h">
+      <Filter>Header Files\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

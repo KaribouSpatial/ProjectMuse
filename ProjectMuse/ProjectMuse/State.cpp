@@ -8,10 +8,9 @@
 /////////////////////////////////////////////////////
 
 //Include My Code
-#include "StateStack.h"
+#include "State.h"
 
 //Include Other
-#include <iostream>
 
 //Defines
 
@@ -24,12 +23,12 @@
 //Class Definition
 
 //Constructor
-StateStack::StateStack()
+State::State()
 {
 }
 
 //Destructor
-StateStack::~StateStack()
+State::~State()
 {
 }
 
@@ -40,11 +39,9 @@ StateStack::~StateStack()
 //Setters
 
 //Function
-void StateStack::update(const double& dt)
-{
-	std::cout << "Update timer: " << dt << std::endl;
-}
 
 //Static Function
+
+//Private Function
 
 //Operator Overload

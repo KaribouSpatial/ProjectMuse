@@ -10,6 +10,7 @@
 #pragma once
 
 //Include My Code
+#include <Vector.hpp>
 
 //Include Other
 
@@ -22,15 +23,15 @@
 //Class Prototypes
 
 //Class Declaration
-class StateStack
+class Camera
 {
 public:
 
 	//Constructor
-	StateStack();
+	Camera();
 
 	//Destructor
-	~StateStack();
+	~Camera();
 
 	//R-only access
 
@@ -39,7 +40,7 @@ public:
 	//Setters
 
 	//Function
-	void update(const double& dt);
+	void applyCamera() const;
 
 	//Static Function
 
@@ -52,5 +53,6 @@ private:
 	//Private Function
 
 	//Private Attribute
-
+	vec3 mPosition;
+	vec3 mOrientation;
 };

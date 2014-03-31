@@ -8,10 +8,9 @@
 /////////////////////////////////////////////////////
 
 //Include My Code
-#include "StateStack.h"
+#include "SceneNode.h"
 
 //Include Other
-#include <iostream>
 
 //Defines
 
@@ -24,12 +23,12 @@
 //Class Definition
 
 //Constructor
-StateStack::StateStack()
+SceneNode::SceneNode()
 {
 }
 
 //Destructor
-StateStack::~StateStack()
+SceneNode::~SceneNode()
 {
 }
 
@@ -40,11 +39,13 @@ StateStack::~StateStack()
 //Setters
 
 //Function
-void StateStack::update(const double& dt)
+void SceneNode::draw() const
 {
-	std::cout << "Update timer: " << dt << std::endl;
+
 }
 
 //Static Function
+
+//Private Function
 
 //Operator Overload

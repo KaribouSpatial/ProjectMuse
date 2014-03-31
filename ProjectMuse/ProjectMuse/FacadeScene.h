@@ -12,25 +12,28 @@
 //Include My Code
 
 //Include Other
+#include <memory>
 
 //Defines
+#define unique(x) std::unique_ptr<x>
 
 //Const
 
 //Prototypes
 
 //Class Prototypes
+class SceneNode;
 
 //Class Declaration
-class StateStack
+class FacadeScene
 {
 public:
 
 	//Constructor
-	StateStack();
+	FacadeScene();
 
 	//Destructor
-	~StateStack();
+	~FacadeScene();
 
 	//R-only access
 
@@ -39,7 +42,7 @@ public:
 	//Setters
 
 	//Function
-	void update(const double& dt);
+	void render() const;
 
 	//Static Function
 
@@ -50,7 +53,8 @@ public:
 private:
 
 	//Private Function
+	void initializeScene();
 
 	//Private Attribute
-
+	unique(SceneNode) mScene;
 };

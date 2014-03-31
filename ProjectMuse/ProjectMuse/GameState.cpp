@@ -8,10 +8,9 @@
 /////////////////////////////////////////////////////
 
 //Include My Code
-#include "StateStack.h"
+#include "GameState.h"
 
 //Include Other
-#include <iostream>
 
 //Defines
 
@@ -24,12 +23,12 @@
 //Class Definition
 
 //Constructor
-StateStack::StateStack()
+GameState::GameState()
 {
 }
 
 //Destructor
-StateStack::~StateStack()
+GameState::~GameState()
 {
 }
 
@@ -40,10 +39,6 @@ StateStack::~StateStack()
 //Setters
 
 //Function
-void StateStack::update(const double& dt)
-{
-	std::cout << "Update timer: " << dt << std::endl;
-}
 
 //Static Function
 
