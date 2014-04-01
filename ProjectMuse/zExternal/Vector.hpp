@@ -51,13 +51,13 @@ public:
 	//Non-Const Operator[]
 	inline T& operator[] (const unsigned& i)
 	{
-		return mVector[inc];
+		return mVector[i];
 	}
 
 	//Const Operator[]
 	inline const T& operator[] (const unsigned& i) const
 	{
-		return mVector[inc];
+		return mVector[i];
 	}
 
 	//Operator=
@@ -123,7 +123,7 @@ public:
 	}
 
 	//Operator/=
-	inline const Vector<T, N>& operator /= (const T k)
+	inline const Vector<T, N>& operator/= (const T k)
 	{
 		if((T)k == 0) return Vector<T, N>();
 		for(int inc = 0; inc < N; ++inc)
@@ -136,7 +136,7 @@ public:
 	//Operator+ with vector
 	inline Vector<T, N> operator+ (const Vector<T, N>& vec) const
 	{
-		Vecteur<T, N> cpy(*this);
+		Vector<T, N> cpy(*this);
 		cpyr += vec;
 		return cpy;
 	}
@@ -144,7 +144,7 @@ public:
 	//Operator+ with scalar
 	inline Vector<T, N> operator+ (const T k) const
 	{
-		Vecteur<T, N> cpy(*this);
+		Vector<T, N> cpy(*this);
 		for(int inc = 0; inc < N; ++inc)
 		{
 			cpy[inc] += k;
@@ -155,7 +155,7 @@ public:
 	//Operator-
 	inline Vector<T, N> operator- (const Vector<T, N>& vec) const
 	{
-		Vecteur<T, N> cpy(*this);
+		Vector<T, N> cpy(*this);
 		cpy -= vec;
 		return cpy;
 	}
@@ -163,7 +163,7 @@ public:
 	//Operator- with scalar
 	inline Vector<T, N> operator- (const T k) const
 	{
-		Vecteur<T, N> cpy(*this);
+		Vector<T, N> cpy(*this);
 		for(int inc = 0; inc < N; ++inc)
 		{
 			cpy[inc] -= k;
@@ -174,7 +174,7 @@ public:
 	//Unary Operator-
 	inline Vector<T, N> operator- () const
 	{
-		ExVector<T, N> vec;
+		Vector<T, N> vec;
 		for(int inc = 0; inc < N; ++inc)
 		{
 			vec[inc] = -(*this)[inc];
@@ -185,7 +185,7 @@ public:
 	//Operator*
 	inline Vector<T, N> operator* (const T k) const
 	{
-		Vecteur<T, N> cpy(*this);
+		Vector<T, N> cpy(*this);
 		cpy *= k;
 		return cpy;
 	}
@@ -199,7 +199,7 @@ public:
 	//Operator/
 	inline Vector<T, N> operator/ (const T k) const
 	{
-		Vecteur<T, N> cpy(*this);
+		Vector<T, N> cpy(*this);
 		cpy /= k;
 		return cpy;
 	}
@@ -252,7 +252,7 @@ public:
 	inline Vector<T, N> project(const Vector<T, N>& dir) const
 	{
 		T coeff = dot(dir) / dir.dot(dir);
-		Vecteur<T, N> vec(dir);
+		Vector<T, N> vec(dir);
 		vec *= coeff;
 		return vec;
 	}

@@ -6,7 +6,6 @@
 /// 
 /// 
 /////////////////////////////////////////////////////
-
 #pragma once
 
 //Include My Code
@@ -23,15 +22,15 @@
 //Class Prototypes
 
 //Class Declaration
-class Camera
+class Player
 {
 public:
 
 	//Constructor
-	Camera();
+	Player();
 
 	//Destructor
-	~Camera();
+	~Player();
 
 	//R-only access
 
@@ -40,8 +39,7 @@ public:
 	//Setters
 
 	//Function
-	void applyCamera() const;
-	void rotateCamera(const vec2& coord);
+	void processMouseDrag(const vec2& deltaPixel);
 
 	//Static Function
 
@@ -51,19 +49,8 @@ public:
 
 private:
 
-	//Private Enum
-	enum SphericAngle
-	{
-		Theta,
-		Phi,
-		Epsilon
-	};
-
 	//Private Function
 
 	//Private Attribute
-	vec3 mPosition;
-	vec3 mTargetPoint;
-	vec3 mOrientation;
-	double mRollEpsilon; //RAD
+
 };

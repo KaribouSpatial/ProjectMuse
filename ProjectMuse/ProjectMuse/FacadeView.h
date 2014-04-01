@@ -47,6 +47,7 @@ public:
 	//Function
 	void applyView() const;
 	void resize(int x, int y);
+	void rotateCamera(const vec2& coord);
 
 	//Static Function
 

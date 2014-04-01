@@ -25,6 +25,7 @@
 class FacadeResources;
 class FacadeView;
 class FacadeScene;
+class FacadePlayer;
 class Application;
 
 //Class Declaration
@@ -48,11 +49,14 @@ public:
 	FacadeResources* getFacadeResources();
 	FacadeView* getFacadeView();
 	FacadeScene* getFacadeScene();
+	FacadePlayer* getFacadePlayer();
+
 
 	//Setters
 	void setFacadeResources(unique(FacadeResources));
 	void setFacadeView(unique(FacadeView));
 	void setFacadeScene(unique(FacadeScene));
+	void setFacadePlayer(unique(FacadePlayer));
 
 	//Function
 	void run();
@@ -72,6 +76,7 @@ private:
 	unique(FacadeResources) mFacadeResources;
 	unique(FacadeView) mFacadeView;
 	unique(FacadeScene) mFacadeScene;
+	unique(FacadePlayer) mFacadePlayer;
 
 	//Singleton specific
 	static FacadeApplication* _instance;

@@ -57,6 +57,11 @@ void FacadeView::resize(int width, int height)
 {
 	mProjection->resize(width, height);
 }
+
+void FacadeView::rotateCamera(const vec2& coord)
+{
+	mCamera->rotateCamera(coord);
+}
 //Static Function
 
 //Private Function

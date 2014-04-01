@@ -13,6 +13,8 @@
 #include "FacadeResources.h"
 #include "FacadeView.h"
 #include "FacadeScene.h"
+#include "FacadePlayer.h"
+
 
 //Include Other
 #include <GL\glew.h>
@@ -169,11 +171,14 @@ void Application::processSpecKeyboard(int touche, int x, int y)
 
 void Application::processMouseClic(int button, int state, int x, int y)
 {
+	if(state == GLUT_DOWN)
+		FacadeApplication::Instance()->getFacadePlayer()->setPreviousMousePosition(x, y);
 	std::cout << "processMouseClic " << x << " " << y << std::endl;
 }
 
 void Application::processMouseDrag(int x, int y)
 {
+	FacadeApplication::Instance()->getFacadePlayer()->processMouseDrag(x, y);
 	std::cout << "processMouseDrag " << x << " " << y << std::endl;
 }
 

@@ -12,6 +12,7 @@
 #include "FacadeResources.h"
 #include "FacadeView.h"
 #include "FacadeScene.h"
+#include "FacadePlayer.h"
 #include "Application.h"
 
 //Include Other
@@ -39,6 +40,7 @@ void FacadeApplication::initialize()
 	mApplication = std::unique_ptr<Application>(new Application);
 	mFacadeResources = std::unique_ptr<FacadeResources>(new FacadeResources);
 	mFacadeScene = std::unique_ptr<FacadeScene>(new FacadeScene);
+	mFacadePlayer = std::unique_ptr<FacadePlayer>(new FacadePlayer);
 }
 
 //Destructor
@@ -81,6 +83,11 @@ FacadeScene* FacadeApplication::getFacadeScene()
 	return mFacadeScene.get();
 }
 
+FacadePlayer* FacadeApplication::getFacadePlayer()
+{
+	return mFacadePlayer.get();
+}
+
 //Setters
 void FacadeApplication::setFacadeResources(unique(FacadeResources) facade)
 {
@@ -95,6 +102,11 @@ void FacadeApplication::setFacadeView(unique(FacadeView) facade)
 void FacadeApplication::setFacadeScene(unique(FacadeScene) facade)
 {
 	mFacadeScene = std::move(facade);
+}
+
+void FacadeApplication::setFacadePlayer(unique(FacadePlayer) facade)
+{
+	mFacadePlayer = std::move(facade);
 }
 
 //Function

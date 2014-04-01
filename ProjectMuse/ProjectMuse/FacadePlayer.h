@@ -6,15 +6,19 @@
 /// 
 /// 
 /////////////////////////////////////////////////////
-
 #pragma once
 
 //Include My Code
+#include "Mouse.h"
+#include "Player.h"
+
 #include <Vector.hpp>
 
 //Include Other
+#include <memory>
 
 //Defines
+#define unique(x) std::unique_ptr<x>
 
 //Const
 
@@ -23,26 +27,26 @@
 //Class Prototypes
 
 //Class Declaration
-class Camera
+class FacadePlayer
 {
 public:
 
 	//Constructor
-	Camera();
+	FacadePlayer();
 
 	//Destructor
-	~Camera();
+	~FacadePlayer();
 
 	//R-only access
+	const vec2i& getPreviousMousePosition() const;
 
 	//R-W access
 
 	//Setters
+	void setPreviousMousePosition(int x, int y);
 
 	//Function
-	void applyCamera() const;
-	void rotateCamera(const vec2& coord);
-
+	void processMouseDrag(int x, int y);
 	//Static Function
 
 	//Operator Overload
@@ -51,19 +55,9 @@ public:
 
 private:
 
-	//Private Enum
-	enum SphericAngle
-	{
-		Theta,
-		Phi,
-		Epsilon
-	};
-
 	//Private Function
 
 	//Private Attribute
-	vec3 mPosition;
-	vec3 mTargetPoint;
-	vec3 mOrientation;
-	double mRollEpsilon; //RAD
+	Mouse mMouse;
+	Player mPlayer;
 };

@@ -6,7 +6,6 @@
 /// 
 /// 
 /////////////////////////////////////////////////////
-
 #pragma once
 
 //Include My Code
@@ -23,25 +22,25 @@
 //Class Prototypes
 
 //Class Declaration
-class Camera
+class Mouse
 {
 public:
 
 	//Constructor
-	Camera();
+	Mouse();
 
 	//Destructor
-	~Camera();
+	~Mouse();
 
 	//R-only access
+	vec2i getPreviousPosition() const;
 
 	//R-W access
 
 	//Setters
+	void setPreviousPosition(const vec2i&);
 
 	//Function
-	void applyCamera() const;
-	void rotateCamera(const vec2& coord);
 
 	//Static Function
 
@@ -51,19 +50,8 @@ public:
 
 private:
 
-	//Private Enum
-	enum SphericAngle
-	{
-		Theta,
-		Phi,
-		Epsilon
-	};
-
 	//Private Function
 
 	//Private Attribute
-	vec3 mPosition;
-	vec3 mTargetPoint;
-	vec3 mOrientation;
-	double mRollEpsilon; //RAD
+	vec2i mPreviousPosition;
 };
