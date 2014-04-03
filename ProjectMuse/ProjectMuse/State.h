@@ -11,8 +11,10 @@
 
 //Include My Code
 #include "StatesID.h"
+#include "IEventHandler.h"
 
 //Include Other
+#include <memory>
 
 //Defines
 
@@ -24,10 +26,13 @@
 class StateStack;
 
 //Class Declaration
-class State
+class State : public IEventHandler
 {
 public:
+	//Typedef
+	typedef std::unique_ptr<State> Ptr;
 
+	//Structure
 	struct Context
 	{
 		// Context();
@@ -52,6 +57,11 @@ public:
 	//Setters
 
 	//Function
+	virtual void draw() = 0;
+	virtual bool update(const double& dt) = 0;
+
+	virtual void onActivate();
+	virtual void onDestroy();
 
 	//Static Function
 

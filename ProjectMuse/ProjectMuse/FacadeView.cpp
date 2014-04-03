@@ -27,8 +27,6 @@
 //Constructor
 FacadeView::FacadeView()
 {
-	mCamera = std::unique_ptr<Camera>(new Camera);
-	mProjection = std::unique_ptr<Projection>(new Projection);
 }
 
 //Destructor
@@ -39,7 +37,7 @@ FacadeView::~FacadeView()
 //R-only access
 const vec2i& FacadeView::getWindowSize() const
 {
-	return mProjection->getWindowSize();
+	return mProjection.getWindowSize();
 }
 
 //R-W access
@@ -47,20 +45,30 @@ const vec2i& FacadeView::getWindowSize() const
 //Setters
 
 //Function
-void FacadeView::applyView() const
+void FacadeView::renderView() const
 {
-	mProjection->applyProjection();
-	mCamera->applyCamera();
+	mProjection.applyProjection();
+	mCamera.applyCamera();
 }
 
 void FacadeView::resize(int width, int height)
 {
-	mProjection->resize(width, height);
+	mProjection.resize(width, height);
 }
 
 void FacadeView::rotateCamera(const vec2& coord)
 {
-	mCamera->rotateCamera(coord);
+	mCamera.rotateCamera(coord);
+}
+
+void FacadeView::moveCamera(const vec2& coord)
+{
+	mCamera.move(coord);
+}
+
+void FacadeView::flattenCamera()
+{
+	mCamera.flatten();
 }
 //Static Function
 

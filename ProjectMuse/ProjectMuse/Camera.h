@@ -10,7 +10,7 @@
 #pragma once
 
 //Include My Code
-#include <Vector.hpp>
+#include "Vector.hpp"
 
 //Include Other
 
@@ -42,6 +42,8 @@ public:
 	//Function
 	void applyCamera() const;
 	void rotateCamera(const vec2& coord);
+	void move(const vec2& coord);
+	void flatten();
 
 	//Static Function
 
@@ -60,10 +62,12 @@ private:
 	};
 
 	//Private Function
+	inline void lookAt(const vec3& position, const vec3& target, const vec3& upVector) const;
 
 	//Private Attribute
 	vec3 mPosition;
-	vec3 mTargetPoint;
-	vec3 mOrientation;
-	double mRollEpsilon; //RAD
+
+	vec3 mFront;
+	vec3 mRight;
+	vec3 mUp;
 };

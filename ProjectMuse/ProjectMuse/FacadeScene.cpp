@@ -42,7 +42,7 @@ FacadeScene::~FacadeScene()
 //Setters
 
 //Function
-void FacadeScene::render() const
+void FacadeScene::renderScene() const
 {
 	mScene->draw();
 }

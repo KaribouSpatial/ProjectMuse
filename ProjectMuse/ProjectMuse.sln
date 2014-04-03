@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProjectMuse", "ProjectMuse\ProjectMuse.vcxproj", "{E03BC495-73EE-41B7-A710-9B33EEE7C0E2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zExternal", "zExternal\zExternal.vcxproj", "{58119095-93AD-412E-9EA4-20E248D70907}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -23,14 +21,6 @@ Global
 		{E03BC495-73EE-41B7-A710-9B33EEE7C0E2}.Release|Win32.Build.0 = Release|Win32
 		{E03BC495-73EE-41B7-A710-9B33EEE7C0E2}.Release|x64.ActiveCfg = Release|x64
 		{E03BC495-73EE-41B7-A710-9B33EEE7C0E2}.Release|x64.Build.0 = Release|x64
-		{58119095-93AD-412E-9EA4-20E248D70907}.Debug|Win32.ActiveCfg = Debug|Win32
-		{58119095-93AD-412E-9EA4-20E248D70907}.Debug|Win32.Build.0 = Debug|Win32
-		{58119095-93AD-412E-9EA4-20E248D70907}.Debug|x64.ActiveCfg = Debug|x64
-		{58119095-93AD-412E-9EA4-20E248D70907}.Debug|x64.Build.0 = Debug|x64
-		{58119095-93AD-412E-9EA4-20E248D70907}.Release|Win32.ActiveCfg = Release|Win32
-		{58119095-93AD-412E-9EA4-20E248D70907}.Release|Win32.Build.0 = Release|Win32
-		{58119095-93AD-412E-9EA4-20E248D70907}.Release|x64.ActiveCfg = Release|x64
-		{58119095-93AD-412E-9EA4-20E248D70907}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

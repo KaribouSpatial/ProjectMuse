@@ -13,8 +13,7 @@
 #include "FacadeResources.h"
 #include "FacadeView.h"
 #include "FacadeScene.h"
-#include "FacadePlayer.h"
-
+#include "Mouse.h"
 
 //Include Other
 #include <GL\glew.h>
@@ -22,17 +21,16 @@
 #include <iostream>
 
 //Defines
-#define FRAME_RATE 1000/60
 #define min(x,y) (x < y ? x : y)
 #define max(x,y) (x >= y ? x : y)
+#define KEY_DOWN true
+#define KEY_UP false
 
 //Const
 
 //Static Prototyping
 
 //Prototypes
-
-//Class Definition
 
 //Namespace
 namespace GlutCallback
@@ -46,12 +44,22 @@ namespace GlutCallback
 
 	void processKeyboard(unsigned char touche, int x, int y)
 	{
-		s_Application->processKeyboard(touche, x, y);
+		s_Application->processKeyboard(touche, KEY_DOWN, x, y);
+	}
+
+	void processKeyboardRelease(unsigned char touche, int x, int y)
+	{
+		s_Application->processKeyboard(touche, KEY_UP, x, y);
 	}
 
 	void processSpecKeyboard(int touche, int x, int y)
 	{
-		s_Application->processSpecKeyboard(touche, x, y);
+		s_Application->processSpecKeyboard(touche, KEY_DOWN, x, y);
+	}
+
+	void processSpecKeyboardRelease(int touche, int x, int y)
+	{
+		s_Application->processSpecKeyboard(touche, KEY_UP, x, y);
 	}
 
 	void processMouseClic(int button, int state, int x, int y)
@@ -80,6 +88,7 @@ namespace GlutCallback
 	}
 }
 
+//Class Definition
 //Constructor
 Application::Application():
 mPrevTime(0),
@@ -115,7 +124,11 @@ void Application::run()
 
 	glutKeyboardFunc(GlutCallback::processKeyboard);
 
+	glutKeyboardUpFunc(GlutCallback::processKeyboardRelease);
+
 	glutSpecialFunc(GlutCallback::processSpecKeyboard);
+
+	glutSpecialUpFunc(GlutCallback::processSpecKeyboardRelease);
 
 	glutMotionFunc(GlutCallback::processMouseDrag);
 
@@ -127,9 +140,9 @@ void Application::run()
 
 	glewInit();
 
-	//initialisation();
+	mStateStack.pushState(States::Game);
 
-	update(FRAME_RATE);
+	//initialisation();
 	
 	glutMainLoop();
 }
@@ -144,7 +157,6 @@ void Application::idle()
 	{
 		mTimeSinceLastUpdate -= TimePerFrame;
 		update(TimePerFrame);
-
 	}
 	else
 	{
@@ -155,35 +167,40 @@ void Application::idle()
 
 void Application::update(int dt)
 {
-	std::cout << mPrevTime << std::endl;
-	std::cout << dt << std::endl;
+	mStateStack.update(dt/1000.0);
 }
 
-void Application::processKeyboard(unsigned char touche, int x, int y)
+void Application::processKeyboard(unsigned char touche, bool state, int x, int y)
 {
+	mStateStack.processKeyboard(touche, state, x, y);
 	std::cout << "processKeyboard " << touche << std::endl;
 }
 
-void Application::processSpecKeyboard(int touche, int x, int y)
+void Application::processSpecKeyboard(int touche, bool state, int x, int y)
 {
+	mStateStack.processSpecKeyboard(touche, state, x, y);
 	std::cout << "processSpecKeyboard " << touche << std::endl;
 }
 
 void Application::processMouseClic(int button, int state, int x, int y)
 {
-	if(state == GLUT_DOWN)
-		FacadeApplication::Instance()->getFacadePlayer()->setPreviousMousePosition(x, y);
+	mStateStack.processMouseClic(button, state, x, y);
+	Mouse::Instance()->setPreviousClicPosition(vec2i(x, y));
+	Mouse::Instance()->setPreviousPosition(vec2i(x, y));
 	std::cout << "processMouseClic " << x << " " << y << std::endl;
 }
 
 void Application::processMouseDrag(int x, int y)
 {
-	FacadeApplication::Instance()->getFacadePlayer()->processMouseDrag(x, y);
+	mStateStack.processMouseDrag(x, y);
+	Mouse::Instance()->setPreviousPosition(vec2i(x, y));
 	std::cout << "processMouseDrag " << x << " " << y << std::endl;
 }
 
 void Application::processMouseMove(int x, int y)
 {
+	mStateStack.processMouseMove(x, y);
+	Mouse::Instance()->setPreviousPosition(vec2i(x, y));
 	std::cout << "processMouseMove " << x << " " << y << std::endl;
 }
 
@@ -191,8 +208,7 @@ void Application::render() const
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	FacadeApplication::Instance()->getFacadeView()->applyView();
-	FacadeApplication::Instance()->getFacadeScene()->render();
+	mStateStack.render();
 	std::cout << "Rendered" << std::endl;
 
 	glutSwapBuffers();

@@ -11,8 +11,9 @@
 
 //Include My Code
 #include "StateStack.h"
-
-#include <NoCopy.hpp>
+#include "Mouse.h"
+#include "IEventHandler.h"
+#include "NoCopy.hpp"
 
 //Include Other
 #include <GL\glew.h>
@@ -33,6 +34,9 @@ class FacadeApplication;
 class Application: private NoCopy
 {
 public:
+	//Typedef
+	typedef std::unique_ptr<Application> Ptr;
+
 	//Constructor
 	Application();
 
@@ -50,11 +54,11 @@ public:
 
 	void idle();
 	void update(int dt);
-	void processKeyboard(unsigned char, int, int);
-	void processSpecKeyboard(int, int, int);
-	void processMouseClic(int, int, int, int);
-	void processMouseDrag(int, int);
-	void processMouseMove(int, int);
+	void processKeyboard(unsigned char touche, bool state, int x, int y);
+	void processSpecKeyboard(int touche, bool state, int x, int y);
+	void processMouseClic(int button, int state, int x, int y);
+	void processMouseDrag(int x, int y);
+	void processMouseMove(int x, int y);
 	void render() const;
 	void resize(GLsizei width, GLsizei height);
 

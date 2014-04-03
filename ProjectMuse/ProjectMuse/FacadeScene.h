@@ -15,7 +15,6 @@
 #include <memory>
 
 //Defines
-#define unique(x) std::unique_ptr<x>
 
 //Const
 
@@ -28,6 +27,9 @@ class SceneNode;
 class FacadeScene
 {
 public:
+
+	//Typedef
+	typedef std::unique_ptr<FacadeScene> Ptr;
 
 	//Constructor
 	FacadeScene();
@@ -42,7 +44,7 @@ public:
 	//Setters
 
 	//Function
-	void render() const;
+	void renderScene() const;
 
 	//Static Function
 
@@ -56,5 +58,5 @@ private:
 	void initializeScene();
 
 	//Private Attribute
-	unique(SceneNode) mScene;
+	std::unique_ptr<SceneNode> mScene;
 };

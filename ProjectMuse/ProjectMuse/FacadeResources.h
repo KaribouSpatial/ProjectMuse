@@ -12,6 +12,7 @@
 //Include My Code
 
 //Include Other
+#include <memory>
 
 //Defines
 
@@ -25,10 +26,17 @@
 class FacadeResources
 {
 public:
+	
+	//Typedef
+	typedef std::unique_ptr<FacadeResources> Ptr;
+
+	//Enum
 	enum Models
 	{
 		Cube
 	};
+
+
 	//Constructor
 	FacadeResources();
 

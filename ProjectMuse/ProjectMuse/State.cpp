@@ -9,6 +9,7 @@
 
 //Include My Code
 #include "State.h"
+#include "StateStack.h"
 
 //Include Other
 
@@ -39,6 +40,35 @@ State::~State()
 //Setters
 
 //Function
+void State::requestStackPush(States::ID stateID)
+{
+	mStack->pushState(stateID);
+}
+
+void State::requestStackPop()
+{
+	mStack->popState();
+}
+
+void State::requestStateClear()
+{
+	mStack->clearStates();
+}
+
+State::Context State::getContext() const
+{
+	return mContext;
+}
+
+void State::onActivate()
+{
+
+}
+
+void State::onDestroy()
+{
+
+}
 
 //Static Function
 

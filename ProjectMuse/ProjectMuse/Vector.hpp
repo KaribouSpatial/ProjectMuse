@@ -396,6 +396,22 @@ public:
 	{
 	}
 
+	//Operator+ with vector3
+	inline Vector3<T> operator+ (const Vector3<T>& vec) const
+	{
+		Vector3<T> cpy(*this);
+		cpy += vec;
+		return cpy;
+	}
+
+	//Operator+ with vector3
+	inline Vector3<T> operator- (const Vector3<T>& vec) const
+	{
+		Vector3<T> cpy(*this);
+		cpyr -= vec;
+		return cpy;
+	}
+
 	//Operator= overload
 	inline const Vector3& operator= (const Vector<T, 3>& v)
 	{
@@ -418,25 +434,57 @@ public:
 		return zr.angle();
 	}
 
-	inline Vector3 rotate(const T angle, const Vector3& axis) const
+	//Rotate the vector
+	inline Vector3 rotate(const T angle, Vector3 axis) const
 	{
-		const T cosA = cos(angle);
-		const T sinA = sin(angle);
+		const T cosA = std::cos(angle);
+		const T sinA = std::sin(angle);
 		const T oneMinusCos = 1 - cosA;
 
-		return Vector3<T>(
+		axis.normalize();
+
+		Vector3<T> vec(
 			// Calcul de la composante X
-			(cosA + oneMinusCos * axis[0] * axis[0])          * vect[0] +
-			(oneMinusCos * axis[0] * axis[1] - axis[2] * sinA) * vect[1] +
-			(oneMinusCos * axis[0] * axis[2] + axis[1] * sinA) * vect[2],
+			(cosA + oneMinusCos * axis[X] * axis[X])          * mVector[X] +
+			(oneMinusCos * axis[X] * axis[Y] - axis[Z] * sinA) * mVector[Y] +
+			(oneMinusCos * axis[X] * axis[Z] + axis[Y] * sinA) * mVector[Z],
 			// Calcul de la composante Y
-			(oneMinusCos * axis[0] * axis[1] + axis[2] * sinA) * vect[0] +
-			(cosA + oneMinusCos * axis[1] * axis[1])          * vect[1] +
-			(oneMinusCos * axis[1] * axis[2] - axis[0] * sinA) * vect[2],
+			(oneMinusCos * axis[X] * axis[Y] + axis[Z] * sinA) * mVector[X] +
+			(cosA + oneMinusCos * axis[Y] * axis[Y])          * mVector[Y] +
+			(oneMinusCos * axis[Y] * axis[Z] - axis[X] * sinA) * mVector[Z],
 			// Calcul de la composante Z
-			(oneMinusCos * axis[0] * axis[2] - axis[1] * sinA) * vect[0] +
-			(oneMinusCos * axis[1] * axis[2] + axis[0] * sinA) * vect[1] +
-			(cosA + oneMinusCos * axis[2] * axis[2])          * vect[2]
+			(oneMinusCos * axis[X] * axis[Z] - axis[Y] * sinA) * mVector[X] +
+			(oneMinusCos * axis[Y] * axis[Z] + axis[X] * sinA) * mVector[Y] +
+			(cosA + oneMinusCos * axis[Z] * axis[Z])          * mVector[Z]
+			);
+		return vec;
+	}
+
+	//Set coordinates
+	inline void setSphericCoord(const T r, const T theta, const T phi)
+	{
+		// Calcul de la position à partir des coordonnées sphériques
+		mVector[X] = r * std::sin(phi) * std::cos(theta);
+		mVector[Z] = r * std::sin(phi) * std::sin(theta);
+		mVector[Y] = r * std::cos(phi);
+
+	}
+
+	inline Vector3 cross(const Vector3& B)
+	{
+		return Vector3(
+			(*this)[Y] * B[Z] - (*this)[Z] * B[Y],
+			(*this)[Z] * B[X] - (*this)[X] * B[Z],
+			(*this)[X] * B[Y] - (*this)[Y] * B[X]
+			);
+	}
+
+	inline friend Vector3 cross(const Vector3& A, const Vector3& B)
+	{
+		return Vector3(
+			A[Y] * B[Z] - A[Z] * B[Y],
+			A[Z] * B[X] - A[X] * B[Z],
+			A[X] * B[Y] - A[Y] * B[X]
 			);
 	}
 

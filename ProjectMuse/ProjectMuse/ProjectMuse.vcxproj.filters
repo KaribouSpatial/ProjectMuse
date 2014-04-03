@@ -46,12 +46,6 @@
     <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{138c593d-27a7-4ae8-900b-15ff499550ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Player">
-      <UniqueIdentifier>{3474862a-8cec-4498-ba38-9e1e22a23e3d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Player">
-      <UniqueIdentifier>{0bdddf8d-14ee-4806-8579-0dd88738c2ab}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -99,14 +93,8 @@
     <ClCompile Include="UnitNode.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="FacadePlayer.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
     <ClCompile Include="Mouse.cpp">
-      <Filter>Source Files\Player</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,14 +143,17 @@
     <ClInclude Include="UnitNode.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="FacadePlayer.h">
-      <Filter>Header Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files\Player</Filter>
+    <ClInclude Include="IEventHandler.h">
+      <Filter>Header Files\State Stack</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.h">
-      <Filter>Header Files\Player</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NoCopy.hpp">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.hpp">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

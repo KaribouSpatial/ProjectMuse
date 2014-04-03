@@ -84,12 +84,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Documents\Repos\ProjectMuse\ProjectMuse\zExternal;D:\Documents\Libraries\glew-1.10.0\include;D:\Documents\Libraries\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Documents\Libraries\SFML-2.1 x64\include;D:\Documents\Repos\ProjectMuse\ProjectMuse\zExternal;D:\Documents\Libraries\glew-1.10.0\include;D:\Documents\Libraries\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Documents\Libraries\glew-1.10.0\lib\Release\x64;D:\Documents\Libraries\freeglut\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;freeglut.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Documents\Libraries\SFML-2.1 x64\lib;D:\Documents\Libraries\glew-1.10.0\lib\Release\x64;D:\Documents\Libraries\freeglut\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;freeglut.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -126,14 +126,12 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="FacadeApplication.cpp" />
-    <ClCompile Include="FacadePlayer.cpp" />
     <ClCompile Include="FacadeResources.cpp" />
     <ClCompile Include="FacadeScene.cpp" />
     <ClCompile Include="FacadeView.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mouse.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projection.cpp" />
     <ClCompile Include="SceneNode.cpp" />
     <ClCompile Include="State.cpp" />
@@ -146,19 +144,20 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="FacadeApplication.h" />
-    <ClInclude Include="FacadePlayer.h" />
     <ClInclude Include="FacadeResources.h" />
     <ClInclude Include="FacadeScene.h" />
     <ClInclude Include="FacadeView.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="IEventHandler.h" />
     <ClInclude Include="Mouse.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="NoCopy.hpp" />
     <ClInclude Include="Projection.h" />
     <ClInclude Include="SceneNode.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StatesID.h" />
     <ClInclude Include="StateStack.h" />
     <ClInclude Include="UnitNode.h" />
+    <ClInclude Include="Vector.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

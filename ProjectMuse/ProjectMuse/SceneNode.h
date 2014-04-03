@@ -12,6 +12,7 @@
 //Include My Code
 
 //Include Other
+#include <memory>
 
 //Defines
 
@@ -25,6 +26,16 @@
 class SceneNode
 {
 public:
+
+	//Typedef
+	typedef std::unique_ptr<SceneNode> Ptr;
+
+	//Enum
+	enum NodeType
+	{
+		Scene = 0,
+		Unit
+	};
 
 	//Constructor
 	SceneNode();
@@ -52,5 +63,7 @@ private:
 	//Private Function
 
 	//Private Attribute
-
+	typedef unsigned ID; 
+	ID mID;
+	NodeType mTpye;
 };

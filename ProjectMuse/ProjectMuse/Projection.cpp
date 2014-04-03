@@ -63,9 +63,7 @@ void Projection::applyProjection() const
 		INIT_NEAR,
 		INIT_NEAR * 2.5);
 #else
-	gluPerspective(45, mWindowSize[X] / mWindowSize[Y], 0.1, 100);
-
-	//glOrtho(-20, 20, -20, 20, -40, 40);
+	gluPerspective(45, INIT_WINDOW_WIDTH / INIT_WINDOW_HEIGHT, 0.0, 100);
 #endif
 }
 

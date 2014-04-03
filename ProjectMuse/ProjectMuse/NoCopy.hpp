@@ -25,7 +25,9 @@ class NoCopy
 {
 protected:
 	//Constructor
-	NoCopy(){};
+	NoCopy()
+	{
+	};
 
 private:
 	//Disable copy

@@ -9,7 +9,7 @@
 #pragma once
 
 //Include My Code
-#include <Vector.hpp>
+#include "Vector.hpp"
 
 //Include Other
 
@@ -26,19 +26,22 @@ class Mouse
 {
 public:
 
-	//Constructor
-	Mouse();
+	//Singleton specific
+	static Mouse* Instance();
+	void erase();
 
 	//Destructor
 	~Mouse();
 
 	//R-only access
 	vec2i getPreviousPosition() const;
+	vec2i getPreviousClicPosition() const;
 
 	//R-W access
 
 	//Setters
-	void setPreviousPosition(const vec2i&);
+	void setPreviousPosition(const vec2i& pos);
+	void setPreviousClicPosition(const vec2i& pos);
 
 	//Function
 
@@ -48,10 +51,19 @@ public:
 
 	//Public Attribute
 
+protected:
+
+	//Constructor
+	Mouse();
+
 private:
 
 	//Private Function
 
 	//Private Attribute
 	vec2i mPreviousPosition;
+	vec2i mPreviousClicPosition;
+
+	//Singleton specific
+	static Mouse* _instance;
 };

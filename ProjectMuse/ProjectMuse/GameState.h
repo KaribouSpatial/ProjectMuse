@@ -10,6 +10,7 @@
 #pragma once
 
 //Include My Code
+#include "State.h"
 
 //Include Other
 
@@ -22,7 +23,7 @@
 //Class Prototypes
 
 //Class Declaration
-class GameState
+class GameState: public State
 {
 public:
 
@@ -39,6 +40,15 @@ public:
 	//Setters
 
 	//Function
+	bool update(const double& dt) override;
+	void draw() override;
+
+	bool processKeyboard(unsigned char touche, bool state, int x, int y) override;
+	bool processSpecKeyboard(int touche, bool state, int x, int y) override;
+	bool processMouseClic(int button, int state, int x, int y) override;
+	bool processMouseDrag(int x, int y) override;
+	bool processMouseMove(int x, int y) override;
+	void handleRealTime(const double& dt) override;
 
 	//Static Function
 
@@ -51,5 +61,4 @@ private:
 	//Private Function
 
 	//Private Attribute
-
 };

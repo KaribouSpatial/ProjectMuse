@@ -10,12 +10,12 @@
 #pragma once
 
 //Include My Code
+#include "Vector.hpp"
 
 //Include Other
 #include <memory>
 
 //Defines
-#define unique(x) std::unique_ptr<x>
 
 //Const
 
@@ -25,7 +25,6 @@
 class FacadeResources;
 class FacadeView;
 class FacadeScene;
-class FacadePlayer;
 class Application;
 
 //Class Declaration
@@ -44,19 +43,17 @@ public:
 	~FacadeApplication();
 
 	//R-only access
+	const vec2i& getPreviousMousePosition() const;
+	const vec2i& getPreviousMouseClicPosition() const;
 
 	//R-W access
+	Application* getApplication();
 	FacadeResources* getFacadeResources();
 	FacadeView* getFacadeView();
 	FacadeScene* getFacadeScene();
-	FacadePlayer* getFacadePlayer();
 
 
 	//Setters
-	void setFacadeResources(unique(FacadeResources));
-	void setFacadeView(unique(FacadeView));
-	void setFacadeScene(unique(FacadeScene));
-	void setFacadePlayer(unique(FacadePlayer));
 
 	//Function
 	void run();
@@ -72,11 +69,10 @@ private:
 	//Private Function
 
 	//Private Attribute
-	unique(Application) mApplication;
-	unique(FacadeResources) mFacadeResources;
-	unique(FacadeView) mFacadeView;
-	unique(FacadeScene) mFacadeScene;
-	unique(FacadePlayer) mFacadePlayer;
+	std::unique_ptr<Application> mApplication;
+	std::unique_ptr<FacadeResources> mFacadeResources;
+	std::unique_ptr<FacadeView> mFacadeView;
+	std::unique_ptr<FacadeScene> mFacadeScene;
 
 	//Singleton specific
 	static FacadeApplication* _instance;
