@@ -133,6 +133,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Projection.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="SceneNode.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateStack.cpp" />
@@ -152,6 +153,10 @@
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="NoCopy.hpp" />
     <ClInclude Include="Projection.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResourceIdentifiers.hpp" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="ResourceHolder.hpp" />
     <ClInclude Include="SceneNode.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StatesID.h" />

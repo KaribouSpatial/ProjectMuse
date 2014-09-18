@@ -8,11 +8,10 @@
 /////////////////////////////////////////////////////
 
 //Include My Code
-#include "UnitNode.h"
-#include "FacadeApplication.h"
-#include "FacadeResources.h"
+#include "Texture.h"
 
 //Include Other
+#include <SFML\Graphics.hpp>
 
 //Defines
 
@@ -25,12 +24,12 @@
 //Class Definition
 
 //Constructor
-UnitNode::UnitNode(): SceneNode()
+Texture::Texture()
 {
 }
 
 //Destructor
-UnitNode::~UnitNode()
+Texture::~Texture()
 {
 }
 
@@ -41,9 +40,13 @@ UnitNode::~UnitNode()
 //Setters
 
 //Function
-void UnitNode::draw() const
+bool Texture::loadFromFile(const std::string& filename)
 {
-	FacadeApplication::Instance()->getFacadeResources()->draw(FacadeResources::Unit);
+	sf::Image img;
+	if(img.loadFromFile(filename))
+		return true;
+	else
+		return false;
 }
 
 //Static Function

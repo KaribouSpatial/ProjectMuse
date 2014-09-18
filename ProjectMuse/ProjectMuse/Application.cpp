@@ -101,6 +101,11 @@ mTimeSinceLastUpdate(0)
 		FacadeApplication::Instance()->getFacadeView()->getWindowSize()[X],
 		FacadeApplication::Instance()->getFacadeView()->getWindowSize()[Y]);
 	mGLWindow = glutCreateWindow("ProjectMuse");
+	glEnable(GL_DEPTH_TEST);
+
+	//Enable Lighting
+	glEnable(GL_LIGHTING);
+	glEnable(GL_COLOR_MATERIAL);
 }
 
 //Destructor
@@ -141,8 +146,6 @@ void Application::run()
 	glewInit();
 
 	mStateStack.pushState(States::Game);
-
-	//initialisation();
 	
 	glutMainLoop();
 }
@@ -206,10 +209,12 @@ void Application::processMouseMove(int x, int y)
 
 void Application::render() const
 {
+	glClearDepth(1.0f);
+	glClearColor(0.13f, 0.12f, 0.13f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	mStateStack.render();
-	std::cout << "Rendered" << std::endl;
+	//std::cout << "Rendered" << std::endl;
 
 	glutSwapBuffers();
 }

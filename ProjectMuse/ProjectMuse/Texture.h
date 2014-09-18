@@ -6,17 +6,13 @@
 /// 
 /// 
 /////////////////////////////////////////////////////
-
 #pragma once
 
 //Include My Code
-#include "ResourceHolder.hpp"
-#include "ResourceIdentifiers.hpp"
+#include "Resource.h"
 
 //Include Other
-#include <GL\glew.h>
-#include <GL\freeglut.h>
-#include <memory>
+#include <string>
 
 //Defines
 
@@ -27,26 +23,15 @@
 //Class Prototypes
 
 //Class Declaration
-class FacadeResources
+class Texture: Resource
 {
 public:
-	
-	//Typedef
-	typedef std::unique_ptr<FacadeResources> Ptr;
-
-	//Enum
-	enum Models
-	{
-		Sphere,
-		Unit,
-		NbModels
-	};
 
 	//Constructor
-	FacadeResources();
+	Texture();
 
 	//Destructor
-	~FacadeResources();
+	~Texture();
 
 	//R-only access
 
@@ -55,7 +40,7 @@ public:
 	//Setters
 
 	//Function
-	void draw(Models);
+	bool loadFromFile(const std::string& filename);
 
 	//Static Function
 
@@ -66,11 +51,7 @@ public:
 private:
 
 	//Private Function
-	void drawSphere() const;
-	void drawUnit() const;
-
-	TextureHolder mTextures;
 
 	//Private Attribute
-	GLUquadric* mQuad;
+
 };

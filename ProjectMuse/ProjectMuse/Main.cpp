@@ -26,6 +26,7 @@ int main(int argc, char* argv[])
 	//Start the application
 	FacadeApplication::Instance()->run();
 
+
 	// le programme n'arrivera jamais jusqu'ici
 	return EXIT_SUCCESS;
 }

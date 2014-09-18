@@ -36,7 +36,7 @@ public:
 	struct Context
 	{
 		// Context();
-		// TextureHolder* textures;
+		// ResourceHolder* textures;
 		// FontHolder* fonts;
 		// MusicPlayer* music;
 		// SoundPlayer* sounds;

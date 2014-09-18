@@ -32,16 +32,11 @@
 
 //Constructor
 Camera::Camera():
-mPosition(10, 0, 0),
-mFront(0, 1, 0),
-mRight(1, 0, 0),
+mPosition(-1, -1, 0),
+mFront(1, 1, 0),
+mRight(1, -1, 0),
 mUp(0, 0, 1)
 {
-	/*mFront.setSphericCoord(1, 0, 0);
-	mRight = vec3(std::cos(-M_HALF_PI),
-				  std::sin(-M_HALF_PI),
-				  0);
-	mUp = cross(mRight, mFront);*/
 }
 
 //Destructor
@@ -62,8 +57,6 @@ void Camera::applyCamera() const
 	glLoadIdentity();
 
 	lookAt(mPosition, mPosition + mFront, mUp);
-
-	glRotated(90, -1, 0, 0);
 }
 
 void Camera::rotateCamera(const vec2& coord)
@@ -101,33 +94,28 @@ void Camera::move(const vec2& coord)
 
 void Camera::flatten()
 {
-	if(mFront[Z] < 0)
-	while(mFront[Z] < -0.0001)
-	{
-		mFront = mFront.rotate(0.0001, mRight);
-		mUp = mUp.rotate(0.0001, mRight);
-	}
-	else
-	while(mFront[Z] > 0.0001)
-	{
-		mFront = mFront.rotate(-0.0001, mRight);
-		mUp = mUp.rotate(-0.0001, mRight);
-	}
+
 
 	if(mRight[Z] < 0)
-	while(mRight[Z] < -0.0001)
+	while(mRight[Z] < -0.01)
 	{
-		mRight = mRight.rotate(0.0001, mFront);
-		mUp = mUp.rotate(0.0001, mFront);
+		mRight = mRight.rotate(0.01, mFront);
+		mUp = mUp.rotate(0.01, mFront);
 	}
 	else
-	while(mRight[Z] > 0.0001)
+	while(mRight[Z] > 0.01)
 	{
-		mRight = mRight.rotate(-0.0001, mFront);
-		mUp = mUp.rotate(-0.0001, mFront);
+		mRight = mRight.rotate(-0.01, mFront);
+		mUp = mUp.rotate(-0.01, mFront);
 	}
-	assert(std::abs(mRight[Z]) < 0.0001 && std::abs(mFront[Z]) < 0.0001);
 
+	if(mUp[Z] < 0)
+	{
+		mRight = mRight.rotate(M_PI, mFront);
+		mUp = mUp.rotate(M_PI, mFront);
+	}
+
+	assert(std::abs(mRight[Z]) < 0.01);
 }
 
 //Static Function

@@ -434,7 +434,7 @@ public:
 		return zr.angle();
 	}
 
-	//Rotate the vector
+	//Rotate the vector, angle in rad
 	inline Vector3 rotate(const T angle, Vector3 axis) const
 	{
 		const T cosA = std::cos(angle);

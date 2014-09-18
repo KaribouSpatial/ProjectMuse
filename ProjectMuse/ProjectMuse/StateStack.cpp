@@ -52,7 +52,7 @@ void StateStack::update(const double& dt)
 	}
 
 	applyPendingChanges();
-	std::cout << "Update timer: " << dt << std::endl;
+	//std::cout << "Update timer: " << dt << std::endl;
 }
 
 void StateStack::render() const
@@ -141,6 +141,7 @@ bool StateStack::isEmpty() const
 //Private Function
 State::Ptr StateStack::createState(States::ID stateID)
 {
+	//VS2013 is stupid
 #ifdef VISUAL_STUDIO_2012
 	auto found = mFactories.find(stateID);
 	assert(found != mFactories.end());

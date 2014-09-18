@@ -108,6 +108,7 @@ private:
 #endif
 };
 
+//VS2013 is stupid
 #ifdef VISUAL_STUDIO_2012
 template <typename T>
 void StateStack::registerState(States::ID stateID)

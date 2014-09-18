@@ -56,6 +56,17 @@ bool GameState::update(const double& dt)
 void GameState::draw()
 {
 	FacadeApplication::Instance()->getFacadeView()->renderView();
+
+	//Lighting the scene
+	GLfloat LumiAmbiant[] = {0.5f, 0.5f, 0.5f, 1.0f};
+	GLfloat LumiDiffuse[] = {0.7f, 0.7f, 0.7f, 1.0f};
+	GLfloat LumiSpeculaire[] = {0.5f, 0.5f, 0.5f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_AMBIENT, LumiAmbiant);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, LumiDiffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, LumiSpeculaire);
+	glEnable(GL_LIGHT0);
+
+	//Rendering the scene
 	FacadeApplication::Instance()->getFacadeScene()->renderScene();
 }
 
@@ -65,6 +76,9 @@ bool GameState::processKeyboard(unsigned char touche, bool state, int x, int y)
 	{
 		switch(touche)
 		{
+		case '\x1b':
+		case '\e':
+			exit(1);
 		case ' ':
 			FacadeApplication::Instance()->getFacadeView()->flattenCamera();
 			break;
