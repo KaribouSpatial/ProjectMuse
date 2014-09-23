@@ -12,6 +12,8 @@
 #include "Resource.h"
 
 //Include Other
+#include <GL\glew.h>
+#include <GL\glut.h>
 #include <string>
 
 //Defines
@@ -34,10 +36,17 @@ public:
 	~Texture();
 
 	//R-only access
+	int getWidth() const;
+	int getHeight() const;
+	int getColumns() const;
+	int getRows() const;
+	GLuint getID() const;
 
 	//R-W access
 
 	//Setters
+	void setWidth(int width);
+	void setHeight(int height);
 
 	//Function
 	bool loadFromFile(const std::string& filename);
@@ -53,5 +62,10 @@ private:
 	//Private Function
 
 	//Private Attribute
-
+	GLuint mIDTexture;
+	
+	int mWidth;
+	int mHeight;
+	int mColumns;
+	int mRows;
 };

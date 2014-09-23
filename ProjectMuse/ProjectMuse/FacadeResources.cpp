@@ -62,51 +62,40 @@ FacadeResources::~FacadeResources()
 }
 
 //R-only access
+const Texture& FacadeResources::getTexture(Textures::ID id) const
+{
+	return mTextures.get(id);
+}
 
 //R-W access
+Texture& FacadeResources::getTexture(Textures::ID id)
+{
+	return mTextures.get(id);
+}
 
 //Setters
 
 //Function
-void FacadeResources::draw(Models model)
+void FacadeResources::draw(Models model, GLuint IDTexture)
 {
+
 	switch(model)
 	{
-	case FacadeResources::Sphere:
+	case Sphere:
 		drawSphere();
+		break;
+	case Axis:
+		drawAxis();
 		break;
 	case Unit:
 		drawUnit();
 		break;
+	case Rectangle:
+		drawRectangle(IDTexture);
+		break;
 	default:
 		break;
 	}
-	glPushAttrib(GL_LINE_BIT);
-	{
-		glLineWidth(3.0);
-
-		// tracer les trois axes ET une ligne vers la source lumineuse
-		GLfloat coords[] =
-		{
-			-15.0, 0.0, 0.0, 15.0, 0.0, 0.0,
-			0.0, -15.0, 0.0, 0.0, 15.0, 0.0,
-			0.0, 0.0, -15.0, 0.0, 0.0, 15.0,
-		};
-		GLfloat couleurs[] =
-		{
-			1.0, 0.0, 0.0, 1.0, 0.0, 0.0,
-			0.0, 1.0, 0.0, 0.0, 1.0, 0.0,
-			0.0, 0.0, 1.0, 0.0, 0.0, 1.0,
-		};
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glEnableClientState(GL_COLOR_ARRAY);
-		glVertexPointer(3, GL_FLOAT, 0, coords);
-		glColorPointer(3, GL_FLOAT, 0, couleurs);
-		glDrawArrays(GL_LINES, 0, 8);
-		glDisableClientState(GL_VERTEX_ARRAY);
-		glDisableClientState(GL_COLOR_ARRAY);
-	}
-	glPopAttrib();
 }
 
 //Static Function
@@ -123,11 +112,21 @@ void FacadeResources::drawSphere() const
 	glPopMatrix();
 }
 
+void FacadeResources::drawRectangle(GLuint IDTexture) const
+{
+
+}
+
 void FacadeResources::drawUnit() const
 {
-	glColor4d(0.922, 0.484, 0.712, 1.0);
+	glEnable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_ALPHA_TEST);
+
+	glPushAttrib(GL_CURRENT_BIT);
 	glPushMatrix();
 	{
+		glColor4d(0.922, 0.484, 0.712, 1.0);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		//right leg
 		glPushMatrix();
@@ -229,5 +228,46 @@ void FacadeResources::drawUnit() const
 		glPopMatrix();
 	}
 	glPopMatrix();
+	glPopAttrib();
+
+	glDisable(GL_ALPHA_TEST);
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_BLEND);
+}
+
+void FacadeResources::drawAxis() const
+{
+	glPushAttrib(GL_LINE_BIT);
+	glPushMatrix();
+	{
+		glLineWidth(3.0);
+		glEnable(GL_DEPTH_TEST);
+
+		GLfloat coords[] =
+		{
+			-15.0, 0.0, 0.0, 15.0, 0.0, 0.0,
+			0.0, -15.0, 0.0, 0.0, 15.0, 0.0,
+			0.0, 0.0, -15.0, 0.0, 0.0, 15.0,
+		};
+		GLfloat couleurs[] =
+		{
+			1.0, 0.0, 0.0, 1.0, 0.0, 0.0,
+			0.0, 1.0, 0.0, 0.0, 1.0, 0.0,
+			0.0, 0.0, 1.0, 0.0, 0.0, 1.0,
+		};
+
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_COLOR_ARRAY);
+
+		glVertexPointer(3, GL_FLOAT, 0, coords);
+		glColorPointer(3, GL_FLOAT, 0, couleurs);
+		glDrawArrays(GL_LINES, 0, 8);
+
+		glDisableClientState(GL_VERTEX_ARRAY);
+		glDisableClientState(GL_COLOR_ARRAY);
+		glDisable(GL_DEPTH_TEST);
+	}
+	glPopMatrix();
+	glPopAttrib();
 }
 	//Operator Overload

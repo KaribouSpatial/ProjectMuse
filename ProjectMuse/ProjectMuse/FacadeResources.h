@@ -21,6 +21,11 @@
 //Defines
 
 //Const
+const GLfloat mat_ambiant_std[] = {0.1f, 0.0f, 0.1f, 1.0f};
+const GLfloat mat_diffuse_std[] = {1.0f, 0.1f, 1.0f, 1.0f};
+const GLfloat mat_specular_std[] = {1.0f, 1.0f, 1.0f, 1.0f};
+const GLfloat mat_emission_std[] = {0.0f, 0.0f, 0.0f, 1.0f};
+const GLfloat mat_shininess_std[] = {100.0f};
 
 //Prototypes
 
@@ -38,7 +43,9 @@ public:
 	enum Models
 	{
 		Sphere,
+		Rectangle,
 		Unit,
+		Axis,
 		NbModels
 	};
 
@@ -49,13 +56,15 @@ public:
 	~FacadeResources();
 
 	//R-only access
+	const Texture& getTexture(Textures::ID id) const;
 
 	//R-W access
+	Texture& getTexture(Textures::ID id);
 
 	//Setters
 
 	//Function
-	void draw(Models);
+	void draw(Models model, GLuint IDTexture = 0);
 
 	//Static Function
 
@@ -67,7 +76,9 @@ private:
 
 	//Private Function
 	void drawSphere() const;
+	void drawRectangle(GLuint IDTexture) const;
 	void drawUnit() const;
+	void drawAxis() const;
 
 	TextureHolder mTextures;
 

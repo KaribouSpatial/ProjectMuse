@@ -10,7 +10,6 @@
 #pragma once
 
 //Include My Code
-
 #include "Vector.hpp"
 
 //Include Other

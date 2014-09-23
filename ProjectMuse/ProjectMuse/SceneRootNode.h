@@ -6,13 +6,15 @@
 /// 
 /// 
 /////////////////////////////////////////////////////
+
 #pragma once
 
 //Include My Code
 #include "SceneNode.h"
-#include "ResourceIdentifiers.hpp"
 
 //Include Other
+#include <memory>
+#include <vector>
 
 //Defines
 
@@ -23,16 +25,20 @@
 //Class Prototypes
 
 //Class Declaration
-class UnitNode: public SceneNode
+class SceneRootNode: public SceneNode
 {
 public:
 
+	//Typedef
+	typedef std::unique_ptr<SceneRootNode> Ptr;
+
+	//Enum
+
 	//Constructor
-	UnitNode();
-	UnitNode(Textures::ID id);
+	SceneRootNode();
 
 	//Destructor
-	~UnitNode();
+	~SceneRootNode();
 
 	//R-only access
 
@@ -49,11 +55,9 @@ public:
 	//Public Attribute
 
 private:
-
 	//Private Function
 	void updateCurrent(double dt) override;
 	void drawCurrent() const override;
 
 	//Private Attribute
-	Texture* mTexture;
 };

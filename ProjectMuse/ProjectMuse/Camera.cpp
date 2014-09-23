@@ -32,9 +32,9 @@
 
 //Constructor
 Camera::Camera():
-mPosition(-1, -1, 0),
-mFront(1, 1, 0),
-mRight(1, -1, 0),
+mPosition(0, 8, 2.5),
+mFront(0, -1, 0),
+mRight(-1, 0, 0),
 mUp(0, 0, 1)
 {
 }
@@ -81,14 +81,14 @@ void Camera::move(const vec2& coord)
 		vec3 move = mRight;
 		double factor = coord[X] / move.norme();
 		move *= factor;
-		mPosition += move;
+		mPosition += move*5;
 	}
 	else
 	{
 		vec3 move = mFront;
 		double factor = coord[Y] / move.norme();
 		move *= factor;
-		mPosition += move;
+		mPosition += move*5;
 	}
 }
 

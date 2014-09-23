@@ -101,11 +101,6 @@ mTimeSinceLastUpdate(0)
 		FacadeApplication::Instance()->getFacadeView()->getWindowSize()[X],
 		FacadeApplication::Instance()->getFacadeView()->getWindowSize()[Y]);
 	mGLWindow = glutCreateWindow("ProjectMuse");
-	glEnable(GL_DEPTH_TEST);
-
-	//Enable Lighting
-	glEnable(GL_LIGHTING);
-	glEnable(GL_COLOR_MATERIAL);
 }
 
 //Destructor
