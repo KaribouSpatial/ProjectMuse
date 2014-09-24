@@ -408,7 +408,7 @@ public:
 	inline Vector3<T> operator- (const Vector3<T>& vec) const
 	{
 		Vector3<T> cpy(*this);
-		cpyr -= vec;
+		cpy -= vec;
 		return cpy;
 	}
 

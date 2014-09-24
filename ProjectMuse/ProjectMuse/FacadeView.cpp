@@ -40,6 +40,11 @@ const vec2i& FacadeView::getWindowSize() const
 	return mProjection.getWindowSize();
 }
 
+const vec3& FacadeView::getCameraPosition() const
+{
+	return mCamera.getPosition();
+}
+
 //R-W access
 
 //Setters

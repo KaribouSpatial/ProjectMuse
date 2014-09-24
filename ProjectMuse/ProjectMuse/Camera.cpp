@@ -45,6 +45,10 @@ Camera::~Camera()
 }
 
 //R-only access
+const vec3& Camera::getPosition() const
+{
+	return mPosition;
+}
 
 //R-W access
 

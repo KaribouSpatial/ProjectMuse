@@ -34,6 +34,7 @@ public:
 	~Camera();
 
 	//R-only access
+	const vec3& getPosition() const;
 
 	//R-W access
 

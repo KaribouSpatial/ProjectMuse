@@ -41,6 +41,7 @@ public:
 
 	//R-only access
 	const vec2i& getWindowSize() const;
+	const vec3& getCameraPosition() const;
 
 	//R-W access
 

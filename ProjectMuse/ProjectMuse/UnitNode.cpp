@@ -11,6 +11,7 @@
 #include "UnitNode.h"
 #include "FacadeApplication.h"
 #include "FacadeResources.h"
+#include "FacadeView.h"
 
 //Include Other
 
@@ -88,10 +89,13 @@ void UnitNode::drawCurrent() const
 		glEnable(GL_BLEND);
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_ALPHA_TEST);
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
 
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glAlphaFunc(GL_GREATER, 0.1f);
 		glBindTexture(GL_TEXTURE_2D, mTexture->getID());
+		
 
 		//Apply Materials
 		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambiant_std);
@@ -100,22 +104,33 @@ void UnitNode::drawCurrent() const
 		glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, mat_emission_std);
 		glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess_std);
 
-		//Apply Transformation Matrices
+		//Apply transformation matrices
+		//Apply position relative to parent node
 		glTranslated(mPosition[X], mPosition[Y], mPosition[Z]);
 
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glEnableClientState(GL_NORMAL_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		glPushMatrix();
+		{
+			//Apply rotation relative to the camera front vector
+			auto vec = mPosition - FacadeApplication::Instance()->getFacadeView()->getCameraPosition();
+			auto thetaDeg = (vec.getTheta() * 180.0) / M_PI;
+			glRotated(thetaDeg - 90, 0, 0, 1);
 
-		glTexCoordPointer(2, GL_DOUBLE, 0, textureCoords);
-		glVertexPointer(3, GL_DOUBLE, 0, vertexCoords);
-		glNormalPointer(GL_DOUBLE, 0, normals);
-		glDrawArrays(GL_QUADS, 0, 4);
+			glEnableClientState(GL_VERTEX_ARRAY);
+			glEnableClientState(GL_NORMAL_ARRAY);
+			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-		glDisableClientState(GL_VERTEX_ARRAY);
-		glDisableClientState(GL_NORMAL_ARRAY);
-		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+			glTexCoordPointer(2, GL_DOUBLE, 0, textureCoords);
+			glVertexPointer(3, GL_DOUBLE, 0, vertexCoords);
+			glNormalPointer(GL_DOUBLE, 0, normals);
+			glDrawArrays(GL_QUADS, 0, 4);
 
+			glDisableClientState(GL_VERTEX_ARRAY);
+			glDisableClientState(GL_NORMAL_ARRAY);
+			glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+		}
+		glPopMatrix();
+
+		glDisable(GL_CULL_FACE);
 		glDisable(GL_ALPHA_TEST);
 		glDisable(GL_DEPTH_TEST);
 		glDisable(GL_BLEND);
