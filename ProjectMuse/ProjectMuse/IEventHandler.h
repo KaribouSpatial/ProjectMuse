@@ -32,7 +32,7 @@ __interface IEventHandler
 	virtual void handleRealTime(const double& dt) = 0;
 
 	/*
-	//.h
+	//Copy this into .h
 	virtual bool processKeyboard(unsigned char touche, bool state, int x, int y) override;
 	virtual bool processSpecKeyboard(int touche, bool state, int x, int y) override;
 	virtual bool processMouseClic(int button, int state, int x, int y) override;
@@ -47,7 +47,7 @@ __interface IEventHandler
 	bool processMouseMove(int x, int y) override;
 	void handleRealTime(const double& dt) override;
 	
-	//.cpp
+	//Copy this into .cpp
 	bool classname::processKeyboard(unsigned char touche, bool state, int x, int y)
 	{
 	}

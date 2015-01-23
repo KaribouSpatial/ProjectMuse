@@ -12,6 +12,7 @@
 #include "FacadeApplication.h"
 #include "FacadeResources.h"
 #include "FacadeView.h"
+#include "Maths.hpp"
 
 //Include Other
 
@@ -49,7 +50,7 @@ UnitNode::~UnitNode()
 
 
 //Function
-void UnitNode::updateCurrent(double dt)
+void UnitNode::updateCurrent(const double& dt)
 {
 
 }
@@ -65,15 +66,6 @@ void UnitNode::drawCurrent() const
 			0.75, 0.0, 0.0,
 			0.75, 0.0, 1.5,
 			-0.75, 0.0, 1.5
-		};
-
-		const GLdouble textureCoords[] =
-		{
-			//  S          T
-			2.0 / 3.0, 1.0 / 4.0,
-			1.0 / 3.0, 1.0 / 4.0,
-			1.0 / 3.0, 0.0,
-			2.0 / 3.0, 0.0
 		};
 
 		const GLdouble normals[] =
@@ -112,8 +104,20 @@ void UnitNode::drawCurrent() const
 		{
 			//Apply rotation relative to the camera front vector
 			auto vec = mPosition - FacadeApplication::Instance()->getFacadeView()->getCameraPosition();
-			auto thetaDeg = (vec.getTheta() * 180.0) / M_PI;
+			auto thetaDeg = Maths::RADtoDEG(vec.getTheta());
 			glRotated(thetaDeg - 90, 0, 0, 1);
+
+			//TODO, CHANGE TEXTURE COORDS ACCORDING TO THETA AND CURRENT SUPPOSED FACING DIRECTION OF THE OBJECT
+			///(SHOW HER ASS WHEN I TURN THE CAMERA, EVEN THO SHE'S FACING ME)
+			////(THAT'S CREEPY)
+			const GLdouble textureCoords[] =
+			{
+				//  S          T
+				2.0 / 3.0, 1.0 / 4.0,
+				1.0 / 3.0, 1.0 / 4.0,
+				1.0 / 3.0, 0.0,
+				2.0 / 3.0, 0.0
+			};
 
 			glEnableClientState(GL_VERTEX_ARRAY);
 			glEnableClientState(GL_NORMAL_ARRAY);

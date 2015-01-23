@@ -48,6 +48,11 @@ void FacadeScene::renderScene() const
 	mScene->draw();
 }
 
+void FacadeScene::updateScene(const double& dt)
+{
+	mScene->update(dt);
+}
+
 //Static Function
 
 //Private Function

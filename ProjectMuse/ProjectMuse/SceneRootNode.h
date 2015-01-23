@@ -56,7 +56,7 @@ public:
 
 private:
 	//Private Function
-	void updateCurrent(double dt) override;
+	void updateCurrent(const double& dt) override;
 	void drawCurrent() const override;
 
 	//Private Attribute

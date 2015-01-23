@@ -151,6 +151,7 @@
     <ClInclude Include="FacadeView.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="IEventHandler.h" />
+    <ClInclude Include="Maths.hpp" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="NoCopy.hpp" />
     <ClInclude Include="Projection.h" />

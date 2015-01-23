@@ -91,11 +91,29 @@ namespace Textures
 	};
 }
 
-// Forward declaration and a few type definitions
+namespace Directions
+{
+	enum ID
+	{
+		TOP_RIGHT,
+		RIGHT,
+		BOT_RIGHT,
+		BOT_LEFT,
+		LEFT,
+		TOP_LEFT,
+		NONE
+	};
+
+	enum ID_Texture
+	{
+		BAS,
+		GAUCHE,
+		DROITE,
+		HAUT
+	};
+}
+
 template <typename Resource, typename Identifier>
 class ResourceHolder;
 
 typedef ResourceHolder<Texture, Textures::ID> TextureHolder;
-//typedef ResourceHolder<Font, Fonts::ID> FontHolder;
-//typedef ResourceHolder<Shader, Shaders::ID> ShaderHolder;
-//typedef ResourceHolder<SoundBuffer, SoundEffect::ID> SoundBufferHolder;

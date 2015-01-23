@@ -152,28 +152,8 @@ State::Ptr StateStack::createState(States::ID stateID)
 	{
 	case States::None:
 		break;
-	case States::Title:
-		break;
-	case States::Menu:
-		break;
 	case States::Game:
 		return State::Ptr(new GameState);
-	case States::Loading:
-		break;
-	case States::Pause:
-		break;
-	case States::NetworkPause:
-		break;
-	case States::Settings:
-		break;
-	case States::GameOver:
-		break;
-	case States::MissionSuccess:
-		break;
-	case States::HostGame:
-		break;
-	case States::JoinGame:
-		break;
 	default:
 		break;
 	}

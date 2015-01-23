@@ -45,6 +45,7 @@ public:
 
 	//Function
 	void renderScene() const;
+	void updateScene(const double& dt);
 
 	//Static Function
 

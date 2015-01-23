@@ -88,7 +88,7 @@ void SceneNode::draw() const
 {
 	glPushMatrix();
 	{
-		//Fire-up opengl draw states
+		//opengl draw states
 		glEnable(GL_LIGHTING);
 		glEnable(GL_COLOR_MATERIAL);
 
@@ -115,18 +115,18 @@ void SceneNode::drawChildren() const
 	}
 }
 
-void SceneNode::update(double dt)
+void SceneNode::update(const double& dt)
 {
 	updateChildren(dt);
 	updateCurrent(dt);
 }
 
-void SceneNode::updateCurrent(double dt)
+void SceneNode::updateCurrent(const double& dt)
 {
 	//SceneNode is abstract;
 }
 
-void SceneNode::updateChildren(double dt)
+void SceneNode::updateChildren(const double& dt)
 {
 	for(auto& child : mChildren)
 		child->update(dt);
@@ -140,7 +140,7 @@ void SceneNode::updateChildren(double dt)
 bool SceneNode::operator==(SceneNode node)
 {
 	return (mID == node.mID ? true : false);
-	/*
+	/* ^^This is the same as this
 	if(mID == node.mID)
 		return true;
 	else return false;

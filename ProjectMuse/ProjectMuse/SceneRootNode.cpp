@@ -46,7 +46,7 @@ SceneRootNode::~SceneRootNode()
 //Static Function
 
 //Private Function
-void SceneRootNode::updateCurrent(double dt)
+void SceneRootNode::updateCurrent(const double& dt)
 {
 
 }

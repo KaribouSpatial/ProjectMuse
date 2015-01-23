@@ -49,7 +49,7 @@ GameState::~GameState()
 bool GameState::update(const double& dt)
 {
 	handleRealTime(dt);
-
+	FacadeApplication::Instance()->getFacadeScene()->updateScene(dt);
 	return true;
 }
 

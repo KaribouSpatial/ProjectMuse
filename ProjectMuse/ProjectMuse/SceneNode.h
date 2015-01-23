@@ -11,6 +11,7 @@
 
 //Include My Code
 #include "Vector.hpp"
+#include "ResourceIdentifiers.hpp"
 
 //Include Other
 #include <memory>
@@ -62,7 +63,7 @@ public:
 
 	//Function
 	void draw() const;
-	void update(double dt);
+	void update(const double& dt);
 
 	//Composite Function
 	void attachChild(Ptr child);
@@ -78,22 +79,21 @@ public:
 protected:
 	//Protected Attribute
 	vec3 mPosition;
+	Directions::ID mDirection;
 
 private:
 
 	//Private Function
 
-	//Composite Private
-	virtual void updateCurrent(double dt);
-	virtual void drawCurrent() const;
-	void updateChildren(double dt);
-	void drawChildren() const;
-
 	//Private Attribute
 	ID mID;
 	NodeTypes::ID mType;
 
-	//Composite Attribute
+	//Composite Specific
 	std::vector<Ptr> mChildren;
 	SceneNode* mParent;
+	virtual void updateCurrent(const double& dt);
+	virtual void drawCurrent() const;
+	void updateChildren(const double& dt);
+	void drawChildren() const;
 };
